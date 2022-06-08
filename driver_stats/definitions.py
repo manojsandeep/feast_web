@@ -1,6 +1,7 @@
 # Importing dependencies
 from google.protobuf.duration_pb2 import Duration
-from feast import Entity, Feature, FeatureView, FileSource, ValueType
+from feast import Entity, Feature, FeatureView, ValueType
+from feast_postgres import PostgreSQLSource
 import os
 
 # Getting the current working directory
@@ -14,8 +15,9 @@ driver = Entity(
     )
 
 # Declaring the source for the first feature file
-file_source1 = FileSource(
+file_source1 = PostgreSQLSource(
     path=os.path.join(dir, "data", "driver_stats_1.parquet"),
+    query="SELECT * FROM driver_stats"
     event_timestamp_column="event_timestamp",
     created_timestamp_column="created"
 )
