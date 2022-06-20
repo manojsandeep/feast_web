@@ -1,9 +1,7 @@
 project: feature_repo
 # registry: data/registry.db
 provider: local
-# online_store:
-#     path: data/online_store.db
-  
+
 online_store:
     type: feast_postgres.PostgreSQLOnlineStore # MUST be this value
     # type: postgres
